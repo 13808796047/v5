@@ -6,7 +6,7 @@
 	<meta content=" " name="keywords" />
 	<meta content="" name="description" />
 
-	<link rel="stylesheet" type="text/css" href="template/default/static/css/css1.css" />
+	<link rel="stylesheet" type="text/css" href="http://localhost/v5/cms/template/default/static/css/css1.css" />
 </head>
 <body >
 	<!--顶部-->
@@ -34,46 +34,35 @@
 								<span>首页</span>
 							</a>
 						</li>
+							<?php
+		$type='top';
+		$cid ='0';
+		$db = M('category');
+		$result = array();
+		switch($type){
+			case 'self'://显示同级栏目,需要栏目cid
+			break;
+			case 'son'://子栏目,需要栏目cid
+
+			if($cid){
+				$result=$db->where('pid=0')->all();
+			}
+			break;
+			case 'top'://一级栏目
+			$result = $db->where('pid=0')->all();
+			break;
+		}
+		
+		if($result):
+		foreach($result as $field):
+			$field['url'] = U('channel',array('cid'=>$field['cid']))
+			?>
 						<li >
-							<a href="/page/gongsijieshao" target="_self">
-								<span>公司介绍</span>
+							<a href="<?php echo $field['url'];?>" target="_self">
+								<span><?php echo $field['cname'];?></span>
 							</a>
 						</li>
-						<li >
-							<a href="/products" target="_self">
-								<span>产品管理</span>
-							</a>
-						</li>
-						<li >
-							<a href="/articles" target="_self">
-								<span>网站新闻</span>
-							</a>
-						</li>
-						<li >
-							<a href="/jobs" target="_self">
-								<span>人才招聘</span>
-							</a>
-						</li>
-						<li >
-							<a href="/books" target="_self">
-								<span>留言系统</span>
-							</a>
-						</li>
-						<li >
-							<a href="/links" target="_self">
-								<span>友情链接</span>
-							</a>
-						</li>
-						<li >
-							<a href="/downs" target="_self">
-								<span>下载专区</span>
-							</a>
-						</li>
-						<li  class="last-item">
-							<a href="/page/lianxiwomen" target="_self">
-								<span>联系我们</span>
-							</a>
-						</li>
+					<?php endforeach;endif;?>
 					</ul>
 				</div>
 			</div>
@@ -136,7 +125,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
 			?>
 										<div class="content-text">
 											<?php echo mb_substr(strip_tags($field['content']),0,150,'utf8');?>
@@ -183,7 +172,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
 			?>	
 											<li>
 												<div class="thumb">
@@ -221,21 +210,33 @@
 								<div class="block-content clearfix">
 									<div class="item-list">
 										<ul class="clearfix">
+												<?php
+		$type='son';
+		$cid ='39';
+		$db = M('category');
+		$result = array();
+		switch($type){
+			case 'self'://显示同级栏目,需要栏目cid
+			break;
+			case 'son'://子栏目,需要栏目cid
+
+			if($cid){
+				$result=$db->where('pid=39')->all();
+			}
+			break;
+			case 'top'://一级栏目
+			$result = $db->where('pid=0')->all();
+			break;
+		}
+		
+		if($result):
+		foreach($result as $field):
+			$field['url'] = U('channel',array('cid'=>$field['cid']))
+			?>
 											<li>
-												<a title="海铁联运" href="/products/haitielianyun/index.html">海铁联运</a>
+												<a title="<?php echo $field['cname'];?>" href="<?php echo $field['url'];?>"><?php echo $field['cname'];?></a>
 											</li>
-											<li>
-												<a title="码头作业" href="/products/matouzuoye/index.html">码头作业</a>
-											</li>
-											<li>
-												<a title="集装箱定舱" href="/products/jizhuangxiangdingcang/index.html">集装箱定舱</a>
-											</li>
-											<li>
-												<a title="优质的仓储服务" href="/products/youzhidecangchufuwu/index.html">优质的仓储服务</a>
-											</li>
-											<li>
-												<a title="海陆联运" href="/products/hailulianyun/index.html">海陆联运</a>
-											</li>
+										<?php endforeach;endif;?>	
 										</ul>
 									</div>
 								</div>
@@ -307,7 +308,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
 			?>
 											<li>
 												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73640.html"><?php echo $field['title'];?></a>
@@ -357,7 +358,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
 			?>
 											<li>
 												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73638.html"><?php echo $field['title'];?></a>

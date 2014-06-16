@@ -25,8 +25,6 @@ TPL = '<?php echo $GLOBALS['user']['TPL'];?>';
 CONTROLTPL = '<?php echo $GLOBALS['user']['CONTROLTPL'];?>';
 STATIC = '<?php echo $GLOBALS['user']['STATIC'];?>';
 PUBLIC = '<?php echo $GLOBALS['user']['PUBLIC'];?>';
-HISTORY = '<?php echo $GLOBALS['user']['HISTORY'];?>';
-HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 </script>
 	<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>
 <script src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/bootstrap.min.js'></script>

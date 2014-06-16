@@ -39,13 +39,13 @@ Class LoginControl extends Control{
 		}
 		
 	}
-	//登录时的验证码显示 
-	Public function code(){
+		//登录时的验证码显示
+	public function code(){
 		//实例化验证码对象
 		$code = new Code();
 		//显示验证码
 		$code->show();
-	}
+	} 
 	//验证用户输入的验证码正确性
 	Public function checkCode(){
 		//比对用户输入验证码

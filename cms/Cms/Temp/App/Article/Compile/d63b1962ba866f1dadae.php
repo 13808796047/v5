@@ -49,6 +49,7 @@ HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 				<tr>
 					<td class='w50'>ID</td>
 					<td class='w100'>文章标题</td>
+					<td class='w100'>文章栏目</td>
 					<td class='w100'>文章作者</td>
 					<td class='w100'>点击数</td>
 					<td class='w150'>操作</td>
@@ -69,6 +70,7 @@ if($_index_a>=$_total_a):$hd["list"]["a"]["last"]=true;endif;?>
 				<tr>
 					<td><?php echo $a['id'];?></td>
 					<td><?php echo $a['title'];?></td>
+					<td><?php echo $a['cname'];?></td>
 					<td><?php echo $a['author'];?></td>
 					<td><?php echo $a['click'];?></td>
 					<td>

@@ -421,5 +421,101 @@ C#	 			',
     '_html' => '',
     '_name' => '办公室',
   ),
+  39 => 
+  array (
+    'cid' => '39',
+    'cname' => '产品分类',
+    'pid' => '0',
+    'keywords' => '产品分类',
+    'description' => '	 				
+产品分类	 			',
+    '_level' => 1,
+    '_html' => '',
+    '_name' => '产品分类',
+  ),
+  40 => 
+  array (
+    'cid' => '40',
+    'cname' => '海铁联运',
+    'pid' => '39',
+    'keywords' => '海铁联运',
+    'description' => '海铁联运	 				
+	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => true,
+    '_end' => false,
+    '_name' => '├─ 海铁联运',
+  ),
+  41 => 
+  array (
+    'cid' => '41',
+    'cname' => '码头作业',
+    'pid' => '39',
+    'keywords' => '码头作业',
+    'description' => '	 				
+码头作业	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => false,
+    '_end' => false,
+    '_name' => '├─ 码头作业',
+  ),
+  43 => 
+  array (
+    'cid' => '43',
+    'cname' => '集装箱定舱',
+    'pid' => '39',
+    'keywords' => '集装箱定舱',
+    'description' => '集装箱定舱	 				
+	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => false,
+    '_end' => false,
+    '_name' => '├─ 集装箱定舱',
+  ),
+  44 => 
+  array (
+    'cid' => '44',
+    'cname' => '优质的仓储服务',
+    'pid' => '39',
+    'keywords' => '优质的仓储服务',
+    'description' => '优质的仓储服务	 				
+	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => false,
+    '_end' => false,
+    '_name' => '├─ 优质的仓储服务',
+  ),
+  45 => 
+  array (
+    'cid' => '45',
+    'cname' => '海陆联运',
+    'pid' => '39',
+    'keywords' => '海陆联运',
+    'description' => '	 				
+海陆联运	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => false,
+    '_end' => false,
+    '_name' => '├─ 海陆联运',
+  ),
+  46 => 
+  array (
+    'cid' => '46',
+    'cname' => '水路运输',
+    'pid' => '39',
+    'keywords' => '水路运输',
+    'description' => '水路运输	 				
+	 			',
+    '_level' => 2,
+    '_html' => '',
+    '_first' => false,
+    '_end' => false,
+    '_name' => '└─ 水路运输',
+  ),
 );
 ?>
