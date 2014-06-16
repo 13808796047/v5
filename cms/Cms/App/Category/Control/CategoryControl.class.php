@@ -1,0 +1,98 @@
+<?php
+//栏目管理
+class CategoryControl extends AuthControl{
+	//数据模型对象
+	private $db;
+    //目录缓存
+    Private $_category;
+	//构造函数
+	   public function __init(){
+		$this->db=K('Category');
+        //栏目缓存数据
+		$this->_category = F('category');
+		
+	}
+    //显示栏目列表
+        Public function index(){
+    	//向视图分配数据
+    	$this->category = $this->_category;
+    	$this->display();
+       
+    }
+    //添加栏目
+        Public function add(){
+
+    	if(IS_POST){
+            
+    		if($this->db->add_category()){
+    			$this->ajax(array('state'=>1,'message'=>'栏目添加成功!'));
+    			//$this->success('');
+
+    		}else{
+    			$this->ajax(array('state'=>0,'message'=>'栏目添加失败!'));
+    			//$this->error($this->db->error) ;
+    		}
+    	}else{
+    		$this->display();
+    	}
+    	
+    }
+    //修改栏目
+        Public function edit(){
+     
+         if(IS_POST){
+           
+            if($this->db->edit_category()){
+                $this->ajax(array('state'=>1,'message'=>'栏目添加成功!'));
+                //$this->success('');
+
+            }else{
+                $this->ajax(array('state'=>0,'message'=>'栏目添加失败!'));
+                //$this->error($this->db->error) ;
+            }
+    	}else{
+    		//分配编辑栏目原数据
+    		$field=$this->db->find(Q('cid'));
+    		//分配所有栏目
+    		$category = $this->db->all();
+    		$category = Data::tree($category,'cname');
+    		foreach ($category as $n => $v) {
+                //将父级栏目添加selected选中状态
+    			$v['selected']='';
+    			if($field['pid']==$v['cid']){
+    				$v['selected'] = ' selected="selected" ';
+    			}
+    			//将子栏目与自身添加disabled禁止选择
+                $v['disabled']='';
+                if($field['cid']==$v['cid']||Data::isChild($category,$v['cid'],$field['cid'])){
+                    $v['disabled']=' disabled="disabled" class="disabled"';
+                }
+               
+                $category[$n]=$v;
+    		}
+    		//分配当前栏目数据
+    		$this->field=$field;
+    		//分配栏目数据
+    		$this->category=$category;
+    		$this->display();
+    	}
+    }
+    //删除栏目
+        Public function del(){   
+            if($this->db->del_category()){
+                $this->ajax(array('state'=> 1,'message'=>'删除成功'));
+            }else{
+                $this->ajax(array('state'=> 0,'message'=>$this->db->error));
+            }
+        }
+    //更新栏目缓存
+        Public function update_cache(){
+            if($this->db->update_cache()){
+                $this->success('更新缓存成功!','index');
+            }else{
+                $this->error('缓存更新失败,请检查缓存目录'.CACHE_PATH.'写权限','index');
+            }
+        }
+   
+}
+?>
