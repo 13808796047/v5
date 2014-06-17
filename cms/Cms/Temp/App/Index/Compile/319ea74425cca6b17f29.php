@@ -6,7 +6,7 @@
 	<meta content=" " name="keywords" />
 	<meta content="" name="description" />
 
-	<link rel="stylesheet" type="text/css" href="http://localhost/v5/cms/template/default/static/css/css1.css" />
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1/v5/cms/template/default/static/css/css1.css" />
 </head>
 <body >
 	<!--顶部-->
@@ -36,16 +36,21 @@
 						</li>
 							<?php
 		$type='top';
-		$cid ='0';
+		$cid =0?0:Q('cid',null,'intval');
+
 		$db = M('category');
 		$result = array();
 		switch($type){
 			case 'self'://显示同级栏目,需要栏目cid
+			if($cid){
+				$pid = $db->where("cid=$cid")->getField('pid');
+				$result=$db->where("pid=$pid")->all();
+			}
 			break;
 			case 'son'://子栏目,需要栏目cid
 
 			if($cid){
-				$result=$db->where('pid=0')->all();
+				$result=$db->where("pid=$cid")->all();
 			}
 			break;
 			case 'top'://一级栏目
@@ -103,8 +108,12 @@
 									</div>
 									<div class="block-content clearfix">
 											<?php
+		$cid = $_GET['cid'];
 		$db = M('article');
 		$type = 'new';
+		if($cid){
+			$db->where("catid=$cid");
+		}
 		if(5){
 			$db->where("id=5");
 		}
@@ -125,7 +134,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
 										<div class="content-text">
 											<?php echo mb_substr(strip_tags($field['content']),0,150,'utf8');?>
@@ -150,8 +159,12 @@
 									<div class="block-content clearfix">
 										<ul class="list-gallery clearfix">
 												<?php
+		$cid = $_GET['cid'];
 		$db = M('article');
 		$type = 'new';
+		if($cid){
+			$db->where("catid=$cid");
+		}
 		if(0){
 			$db->where("id=0");
 		}
@@ -172,7 +185,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>	
 											<li>
 												<div class="thumb">
@@ -212,16 +225,21 @@
 										<ul class="clearfix">
 												<?php
 		$type='son';
-		$cid ='39';
+		$cid =39?39:Q('cid',null,'intval');
+
 		$db = M('category');
 		$result = array();
 		switch($type){
 			case 'self'://显示同级栏目,需要栏目cid
+			if($cid){
+				$pid = $db->where("cid=$cid")->getField('pid');
+				$result=$db->where("pid=$pid")->all();
+			}
 			break;
 			case 'son'://子栏目,需要栏目cid
 
 			if($cid){
-				$result=$db->where('pid=39')->all();
+				$result=$db->where("pid=$cid")->all();
 			}
 			break;
 			case 'top'://一级栏目
@@ -286,8 +304,12 @@
 									<div class="item-list">
 										<ul class="clearfix">
 												<?php
+		$cid = $_GET['cid'];
 		$db = M('article');
 		$type = 'new';
+		if($cid){
+			$db->where("catid=$cid");
+		}
 		if(0){
 			$db->where("id=0");
 		}
@@ -308,7 +330,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
 											<li>
 												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73640.html"><?php echo $field['title'];?></a>
@@ -336,8 +358,12 @@
 									<div class="item-list">
 										<ul class="clearfix">
 												<?php
+		$cid = $_GET['cid'];
 		$db = M('article');
 		$type = 'hot';
+		if($cid){
+			$db->where("catid=$cid");
+		}
 		if(0){
 			$db->where("id=0");
 		}
@@ -358,7 +384,7 @@
 		if($result):
 		foreach($result as $field):
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
-				$field['thumb'] = 'http://localhost/v5/cms/'.$field['thumb'];
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
 											<li>
 												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73638.html"><?php echo $field['title'];?></a>

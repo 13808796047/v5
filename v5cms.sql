@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2014-06-13 17:52:47
+Date: 2014-06-17 11:37:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,7 +50,7 @@ CREATE TABLE `v5_article` (
   `updatetime` int(10) DEFAULT NULL,
   `title` char(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of v5_article
@@ -59,6 +59,10 @@ INSERT INTO `v5_article` VALUES ('1', '28', 'Java', '								java							', '<p><
 INSERT INTO `v5_article` VALUES ('2', '26', 'php', 'php', '<p>PHP（PHP: Hypertext Preprocessor的缩写，中文名：“超文本预处理器”）是一种通用<a target=\"_blank\" href=\"http://baike.baidu.com/view/9664.htm\">开源</a><a target=\"_blank\" href=\"http://baike.baidu.com/view/76320.htm\">脚本语言</a>。<a target=\"_blank\" href=\"http://baike.baidu.com/view/135635.htm\">语法</a>吸收了<a target=\"_blank\" href=\"http://baike.baidu.com/view/1219.htm\">C语言</a>、<a target=\"_blank\" href=\"http://baike.baidu.com/view/29.htm\">Java</a>和<a target=\"_blank\" href=\"http://baike.baidu.com/view/46614.htm\">Perl</a>的特点，入门门槛较低，易于学习，使用广泛，主要适用于<a target=\"_blank\" href=\"http://baike.baidu.com/view/3912.htm\">Web</a>开发领域。PHP的文件后缀名为php</p>', '100', 'upload/article/2014/06/13/47241402635399.png', '1', '百度百科', 'Rasmus Lerdorf', '1402635399', '2014', 'PHP');
 INSERT INTO `v5_article` VALUES ('3', '22', ' 维基百科', '																\r\n维基百科														', '<h1><span class=\"mw-headline\" id=\".E7.BB.B4.E5.9F.BA.E7.99.BE.E7.A7.91\"><a href=\"http://zh.wikipedia.org/wiki/Wikipedia:%E5%85%B3%E4%BA%8E\" title=\"Wikipedia:关于\">维基百科</a></span></h1><p><br/></p>', '100', 'upload/article/2014/06/13/66861402644266.png', '1', ' 维基百科', ' 维基百科', '1402642091', '1970', ' 维基百科！！！-');
 INSERT INTO `v5_article` VALUES ('4', '22', ' 维基百科', '		\r\n维基百科维基百科					\r\n维基百科维基百科					\r\n维基百科维基百科					\r\n维基百科维基百科																																			', '<h1><span class=\"mw-headline\" id=\".E7.BB.B4.E5.9F.BA.E7.99.BE.E7.A7.91\"><a href=\"http://zh.wikipedia.org/wiki/Wikipedia:%E5%85%B3%E4%BA%8E\" title=\"Wikipedia:关于\">维基百科</a></span></h1><p><br/></p>', '100', null, '1', ' 维基百科', ' 维基百科', '1402642654', '1970', ' 维基百科!!!');
+INSERT INTO `v5_article` VALUES ('5', '38', '', '', '<p>华为是全球领先的信息与通信解决方案供应商。我们围绕客户的需求持续创新，与合作伙伴开放合作，在电信网络、企业网络、消费者和云计算等领域构筑了端到端\r\n的解决方案优势。我们致力于为电信运营商、企业和消费者等提供有竞争力的 ICT \r\n解决方案和服务，持续提升客户体验，为客户创造最大价值。目前，华为的产品和解决方案已经应用于170 多个国家和地区，服务全球1/3的人口。<br/><br/>我们以丰富人们的沟通和生活为愿景，运用信息与通信领域专业经验，消除数字鸿沟，让人人享有宽带。为应对全球气候变化挑战，华为通过领先的绿色解决方案，帮助客户及其他行业降低能源消耗和二氧化碳排放，创造最佳的社会、经济和环境效益。</p>', '100', null, '1', '例如:腾讯网', 'admin', '1402891204', '1402891204', '公司介绍');
+INSERT INTO `v5_article` VALUES ('6', '26', '', '', '<p>1、Xdebug 错误与性能分析</p><p>2、Xdebug 内置函数的应用</p><p>3、Xdebug 日志查看工具</p><p>&nbsp;</p><p>&nbsp;</p><p>xdebug.max_nesting_level = 50 &nbsp;最大循环或调试次数，防止死循环</p><p>&nbsp;</p><p>xdebug.dump_once = On &nbsp;</p><p>xdebug.dump_globals = On</p><p>xdebug.dump_undefined = On</p><p>xdebug.dump.SERVER = REQUEST_METHOD,REQUEST_URI,HTTP_USER_AGENT</p><p>xdebug.dump.REQUEST=*</p><p>&nbsp;</p><p>xdebug.show_exception_trace = On &nbsp; 仍将强制执行异常跟踪</p><p>xdebug.show_local_vars = 1</p><p>将打印每个函数调用的最外围中的所有局部变量，包括尚未初始化的变量</p><p>xdebug.var_display_max_depth = 6</p><p>表示转储复杂变量的深度。</p><p>&nbsp;</p><p>Xdebug扩展加载后，Xdebug会对原有的某些PHP函数进行覆写</p><p><br/></p>', '100', 'upload/article/2014/06/17/83661402970864.jpg', '1', '例如:腾讯网', 'admin', '1402970864', '1402970864', 'PHP5.3 Xdebug 错误分析与性能调试');
+INSERT INTO `v5_article` VALUES ('7', '25', '', '', '<p>今天我们来分享一款基于HTML5和SVG的动画效果，它是一个可以自动分叉的树，动画将以二叉树的形式展开。这三颗SVG树先是用svg的g画笔来定义这些树枝，然后利用javascript来实现动态改变g从而实现树枝的分叉展开动画。</p>', '100', null, '1', '例如:腾讯网', 'admin', '1402971517', '1402971517', 'HTML5 SVG 树枝分叉动画特效');
+INSERT INTO `v5_article` VALUES ('8', '25', '', '', '<p><br/>之前我们介绍过很多CSS3菜单了，效果都十分华丽炫酷，但是这些CSS3菜单基本都是二维平面菜单，今天要分享的这款HTML5/CSS3菜单却是3D的效果。菜单展现时出现折叠下拉的动画特效，菜单也可以收起，鼠标滑过菜单项的效果也很不错。</p>', '100', 'upload/article/2014/06/17/87951402972092.jpg', '1', '例如:腾讯网', 'admin', '1402972092', '1402972092', 'HTML5/CSS3 3D下拉折叠菜单 超炫CSS3菜单动画');
 
 -- ----------------------------
 -- Table structure for v5_category
@@ -71,7 +75,7 @@ CREATE TABLE `v5_category` (
   `keywords` varchar(80) DEFAULT NULL COMMENT '关键字',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of v5_category
@@ -106,6 +110,14 @@ INSERT INTO `v5_category` VALUES ('34', 'asp', '32', 'asp', 'asp	 				\r\n	 			'
 INSERT INTO `v5_category` VALUES ('35', 'C++', '0', 'C++', 'C++	 				\r\n	 			');
 INSERT INTO `v5_category` VALUES ('36', 'c', '35', 'c', 'c	 				\r\n	 			');
 INSERT INTO `v5_category` VALUES ('37', '奔驰', '23', '奔驰', '奔驰	 				\r\n	 			');
+INSERT INTO `v5_category` VALUES ('38', '办公室', '0', '办公室', '办公室	 				\r\n	 			');
+INSERT INTO `v5_category` VALUES ('39', '产品分类', '0', '产品分类', '	 				\r\n产品分类	 			');
+INSERT INTO `v5_category` VALUES ('40', '海铁联运', '39', '海铁联运', '海铁联运	 				\r\n	 			');
+INSERT INTO `v5_category` VALUES ('41', '码头作业', '39', '码头作业', '	 				\r\n码头作业	 			');
+INSERT INTO `v5_category` VALUES ('43', '集装箱定舱', '39', '集装箱定舱', '集装箱定舱	 				\r\n	 			');
+INSERT INTO `v5_category` VALUES ('44', '优质的仓储服务', '39', '优质的仓储服务', '优质的仓储服务	 				\r\n	 			');
+INSERT INTO `v5_category` VALUES ('45', '海陆联运', '39', '海陆联运', '	 				\r\n海陆联运	 			');
+INSERT INTO `v5_category` VALUES ('46', '水路运输', '39', '水路运输', '水路运输	 				\r\n	 			');
 
 -- ----------------------------
 -- Table structure for v5_config

@@ -15,6 +15,9 @@ $config =  array(
     'DEFAULT_APP'                   => 'Index' ,//默认访问应用
      'TPL_ERROR'                     => GROUP_TEMPLATE.'error.html',     //错误信息模板
      'TPL_SUCCESS'                   => GROUP_TEMPLATE.'success.html',   //正确信息模板
+     'ROUTE' => array(
+        '/^list(\d+).html$/' => 'Index/index/Channel/cid/#1'
+        ),
 );
 return array_merge($config,require 'data/config/config.inc.php');
 ?>

@@ -5,7 +5,33 @@
 	<title><?php echo $field['cname'];?></title>
 	<meta content="网站新闻, " name="keywords" />
 	<meta content="绿黑色物流网站设计G的网站新闻列表信息。" name="description" />
-	<link rel="stylesheet" type="text/css" href="http://localhost/v5/cms/template/default/static/css/css1.css" />
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1/v5/cms/template/default/static/css/css1.css" />
+	<script type='text/javascript' src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
+<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
+<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
+<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
+<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
+<script type='text/javascript'>
+HOST = '<?php echo $GLOBALS['user']['HOST'];?>';
+ROOT = '<?php echo $GLOBALS['user']['ROOT'];?>';
+WEB = '<?php echo $GLOBALS['user']['WEB'];?>';
+URL = '<?php echo $GLOBALS['user']['URL'];?>';
+HDPHP = '<?php echo $GLOBALS['user']['HDPHP'];?>';
+HDPHPDATA = '<?php echo $GLOBALS['user']['HDPHPDATA'];?>';
+HDPHPTPL = '<?php echo $GLOBALS['user']['HDPHPTPL'];?>';
+HDPHPEXTEND = '<?php echo $GLOBALS['user']['HDPHPEXTEND'];?>';
+APP = '<?php echo $GLOBALS['user']['APP'];?>';
+CONTROL = '<?php echo $GLOBALS['user']['CONTROL'];?>';
+METH = '<?php echo $GLOBALS['user']['METH'];?>';
+GROUP = '<?php echo $GLOBALS['user']['GROUP'];?>';
+TPL = '<?php echo $GLOBALS['user']['TPL'];?>';
+CONTROLTPL = '<?php echo $GLOBALS['user']['CONTROLTPL'];?>';
+STATIC = '<?php echo $GLOBALS['user']['STATIC'];?>';
+PUBLIC = '<?php echo $GLOBALS['user']['PUBLIC'];?>';
+HISTORY = '<?php echo $GLOBALS['user']['HISTORY'];?>';
+HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
+TEMPLATE = '<?php echo $GLOBALS['user']['TEMPLATE'];?>';
+</script>
 </head>
 <body >
 	<!--顶部-->
@@ -123,37 +149,46 @@
 													</tr>
 												</thead>
 												<tbody>
+														<?php
+		$cid = $_GET['cid'];
+		$data = Data::channelList(F('category'),$cid,'','cid');
+		$tmp = array();
+		foreach ($data as $d) {
+			$tmp[]=$d['cid'];
+		}
+		$Where = 'cid in('.implode(',', $tmp).')';
+		
+		$db = K('ArticleView');
+		$row = 1;
+		$where = "catid=$cid";
+		$page = new Page($db->where($where)->count(),$row);
+		$result = $db->where($where)->limit($page->limit())->all();
+	
+		if($result):
+		foreach($result as $field):
+			$field['caturl'] = U('channel',array('cid'=>$field['cid']))
+			?>
 													<tr>
 														<td class="title">
 															<span class="catalog">
 																[
-																<a href="/articles/meitibaodao/index.html" title="媒体报道">媒体报道</a>
+																<a href="" title="媒体报道"><?php echo $field['cname'];?></a>
 																]
 															</span>
-															<a href="/articles/meitibaodao/73640.html" target="_blank" title="初识集装箱干燥剂">
-																<span class="style1">初识集装箱干燥剂</span>
+															<a href="" target="_blank" >
+																<span class="style1"><?php echo $field['title'];?></span>
 															</a>
 														</td>
-														<td>2013-12-24</td>
+														<td><?php echo date('Y-m-d',$field['addtime']);?></td>
 													</tr>
+												<?php endforeach;endif;?>
 												</tbody>
 											</table>
 										</div>
 										<div class="pager clearfix">
-											<div class="list">
+											<div class="page1">
 
-												<span nolinkClass="pager-nolink" class="pager-nolink">
-													<span>上一页</span>
-												</span>
-												<span class="pager-current">
-													<span>1</span>
-												</span>
-												<a href="/articles/index/page:2" class="pager-item" link_type="cms_front">
-													<span>2</span>
-												</a>
-												<a href="/articles/index/page:2" nolinkClass="pager-nolink" class="pager-item">
-													<span>下一页</span>
-												</a>
+												<?php echo $page->show(1);?>
 
 											</div>
 										</div>
@@ -171,7 +206,7 @@
 							<div class="block first-block block-articles  list-240" id="block-articles-109062" rel="109062">
 								<div class="block-head">
 									<div class="head-inner">
-										<h2 class="title">文章分类</h2>
+										<h2 class="title">产品展示</h2>
 										<div class="links">
 											<a class="more" href="/articles">更多</a>
 										</div>
@@ -180,18 +215,38 @@
 								<div class="block-content clearfix">
 									<div class="item-list">
 										<ul class="clearfix">
+												<?php
+		$type='son';
+		$cid =39?39:Q('cid',null,'intval');
+
+		$db = M('category');
+		$result = array();
+		switch($type){
+			case 'self'://显示同级栏目,需要栏目cid
+			if($cid){
+				$pid = $db->where("cid=$cid")->getField('pid');
+				$result=$db->where("pid=$pid")->all();
+			}
+			break;
+			case 'son'://子栏目,需要栏目cid
+
+			if($cid){
+				$result=$db->where("pid=$cid")->all();
+			}
+			break;
+			case 'top'://一级栏目
+			$result = $db->where('pid=0')->all();
+			break;
+		}
+		
+		if($result):
+		foreach($result as $field):
+			$field['url'] = U('channel',array('cid'=>$field['cid']))
+			?>
 											<li>
-												<a title="国内新闻" href="/articles/guoneixinwen/index.html">国内新闻</a>
+												<a title="<?php echo $field['cname'];?>" href="<?php echo $field['url'];?>"><?php echo $field['cname'];?></a>
 											</li>
-											<li>
-												<a title="国际新闻" href="/articles/guojixinwen/index.html">国际新闻</a>
-											</li>
-											<li>
-												<a title="公司新闻" href="/articles/gongsixinwen/index.html">公司新闻</a>
-											</li>
-											<li>
-												<a title="媒体报道" href="/articles/meitibaodao/index.html">媒体报道</a>
-											</li>
+										<?php endforeach;endif;?>		
 										</ul>
 									</div>
 								</div>
@@ -213,21 +268,40 @@
 								<div class="block-content clearfix">
 									<div class="item-list">
 										<ul class="clearfix">
+												<?php
+		$cid = $_GET['cid'];
+		$db = M('article');
+		$type = 'new';
+		if($cid){
+			$db->where("catid=$cid");
+		}
+		if(0){
+			$db->where("id=0");
+		}
+		if(0){
+			$db->where("thumb<>''");
+		}
+		switch ($type) {
+			case 'hot':
+					$db->order('click desc');
+				break;
+
+
+			default:
+					$db->order('id desc');
+		}
+		
+		$result = $db->limit(5)->all();
+		if($result):
+		foreach($result as $field):
+				$field['title'] = mb_substr($field['title'],0,10,'utf8');
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+			?>
 											<li>
-												<a title="初识集装箱干燥剂" href="/articles/meitibaodao/73640.html">初识集装箱干燥剂</a>
+												<a title="初识集装箱干燥剂" href="/articles/meitibaodao/73640.html"><?php echo $field['title'];?></a>
 											</li>
-											<li>
-												<a title="进出口必须了解的提单知识" href="/articles/meitibaodao/73639.html">进出口必须了解的提单知识</a>
-											</li>
-											<li>
-												<a title="舱单新规定" href="/articles/meitibaodao/73638.html">舱单新规定</a>
-											</li>
-											<li>
-												<a title="走进防城港 弄潮北部湾" href="/articles/meitibaodao/73637.html">走进防城港 弄潮北部湾</a>
-											</li>
-											<li>
-												<a title="广西北部湾打造国际航运枢纽和港..." href="/articles/meitibaodao/73636.html">广西北部湾打造国际航运枢纽和港...</a>
-											</li>
+										<?php endforeach;endif;?>
+											
 										</ul>
 									</div>
 								</div>

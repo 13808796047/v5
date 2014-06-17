@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 		<title>操作成功</title>
-		<link rel="stylesheet" type="text/css" href="http://127.0.0.1/v5/cms/hdphp/hdphp/Lib/Tpl/static/css.css"/>
+		<link rel="stylesheet" type="text/css" href="http://localhost/v5/cms/hdphp/hdphp/Lib/Tpl/static/css.css"/>
 	</head>
 	<body>
 		<div class="wrap">

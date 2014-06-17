@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>添加文章 </title>
-	<script type='text/javascript' src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
-<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
+	<script type='text/javascript' src='http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
+<link href='http://localhost/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
 <script type='text/javascript'>
 HOST = '<?php echo $GLOBALS['user']['HOST'];?>';
 ROOT = '<?php echo $GLOBALS['user']['ROOT'];?>';
@@ -29,7 +29,7 @@ HISTORY = '<?php echo $GLOBALS['user']['HISTORY'];?>';
 HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 </script>
 	
-	<script type="text/javascript" src="http://127.0.0.1/v5/cms/Cms/App/Article/Tpl/Article/js/js.js"></script>
+	<script type="text/javascript" src="http://localhost/v5/cms/Cms/App/Article/Tpl/Article/js/js.js"></script>
 </head>
 <body>
 <div class='wrap'>
@@ -97,11 +97,11 @@ endif;?>
  				<tr>
  					<th class='w100'>正文</th>
  					<td >
- 						<script type="text/javascript" charset="utf-8" src="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/ueditor.config.js"></script><script type="text/javascript" charset="utf-8" src="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/ueditor.all.min.js"></script><script type="text/javascript">UEDITOR_HOME_URL="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/"</script><script id="hd_content" name="content" type="text/plain"></script>
+ 						<script type="text/javascript" charset="utf-8" src="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/ueditor.config.js"></script><script type="text/javascript" charset="utf-8" src="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/ueditor.all.min.js"></script><script type="text/javascript">UEDITOR_HOME_URL="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Ueditor/"</script><script id="hd_content" name="content" type="text/plain"></script>
         <script type='text/javascript'>
         $(function(){
                 var ue = UE.getEditor('hd_content',{
-                imageUrl:'http://127.0.0.1/v5/cms/index.php?a=Article&c=Article&m=ueditor_upload&g=App&water=1&uploadsize=2000000&maximagewidth=false&maximageheight=false'//处理上传脚本
+                imageUrl:'http://localhost/v5/cms/index.php?a=Article&c=Article&m=ueditor_upload&g=App&water=1&uploadsize=2000000&maximagewidth=false&maximageheight=false'//处理上传脚本
                 ,zIndex : 0
                 ,autoClearinitialContent:false
                 ,initialFrameWidth:"100%" //宽度1000

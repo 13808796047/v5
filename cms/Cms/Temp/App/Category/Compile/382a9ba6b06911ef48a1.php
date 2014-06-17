@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>修改栏目 </title>
-	<script type='text/javascript' src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
-<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
+	<script type='text/javascript' src='http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
+<link href='http://localhost/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
 <script type='text/javascript'>
 HOST = '<?php echo $GLOBALS['user']['HOST'];?>';
 ROOT = '<?php echo $GLOBALS['user']['ROOT'];?>';
@@ -28,9 +28,9 @@ PUBLIC = '<?php echo $GLOBALS['user']['PUBLIC'];?>';
 HISTORY = '<?php echo $GLOBALS['user']['HISTORY'];?>';
 HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 </script>
-	<script type="text/javascript" src="http://127.0.0.1/v5/cms/Cms/App/Category/Tpl/Category/js/validate.js"></script>
-	<script type="text/javascript" src="http://127.0.0.1/v5/cms/Cms/App/Category/Tpl/Category/js/js.js"></script>
-	<link type="text/css" rel="stylesheet" href="http://127.0.0.1/v5/cms/Cms/App/Category/Tpl/Category/css/css.css"/>
+	<script type="text/javascript" src="http://localhost/v5/cms/Cms/App/Category/Tpl/Category/js/validate.js"></script>
+	<script type="text/javascript" src="http://localhost/v5/cms/Cms/App/Category/Tpl/Category/js/js.js"></script>
+	<link type="text/css" rel="stylesheet" href="http://localhost/v5/cms/Cms/App/Category/Tpl/Category/css/css.css"/>
 </head>
 <body>
 	<div class="menu_list">
@@ -42,7 +42,7 @@ HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 				<a href="javascript:;">添加顶级栏目</a>
 			</li>
 		 <li>
-		 <a href="javascript:update_cache();"> 更新栏目缓存 <a/>
+		 <a href="<?php echo U('update_cache');?>"> 更新栏目缓存 <a/>
 		 </li>
 	 </ul>
  </div>

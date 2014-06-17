@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>后台登录入口</title>
-	<script type='text/javascript' src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
-<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
+	<script type='text/javascript' src='http://localhost/v5/cms/hdphp/hdphp/Extend/Org/Jquery/jquery-1.8.2.min.js'></script>
+<link href='http://localhost/v5/cms/hdphp/hdphp/../hdjs/css/hdjs.css' rel='stylesheet' media='screen'>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/hdjs.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/js/slide.js'></script>
+<script src='http://localhost/v5/cms/hdphp/hdphp/../hdjs/org/cal/lhgcalendar.min.js'></script>
 <script type='text/javascript'>
 HOST = '<?php echo $GLOBALS['user']['HOST'];?>';
 ROOT = '<?php echo $GLOBALS['user']['ROOT'];?>';
@@ -25,21 +25,23 @@ TPL = '<?php echo $GLOBALS['user']['TPL'];?>';
 CONTROLTPL = '<?php echo $GLOBALS['user']['CONTROLTPL'];?>';
 STATIC = '<?php echo $GLOBALS['user']['STATIC'];?>';
 PUBLIC = '<?php echo $GLOBALS['user']['PUBLIC'];?>';
+HISTORY = '<?php echo $GLOBALS['user']['HISTORY'];?>';
+HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 </script>
-	<link href='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>
-<script src='http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/bootstrap.min.js'></script>
+	<link href='http://localhost/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>
+<script src='http://localhost/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/bootstrap.min.js'></script>
                 <!--[if lte IE 6]>
-                <link rel="stylesheet" type="text/css" href="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/ie6/css/bootstrap-ie6.css">
+                <link rel="stylesheet" type="text/css" href="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/ie6/css/bootstrap-ie6.css">
                 <![endif]-->
                 <!--[if lt IE 9]>
-                <script src="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/html5shiv.min.js"></script>
-                <script src="http://127.0.0.1/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/respond.min.js"></script>
+                <script src="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/html5shiv.min.js"></script>
+                <script src="http://localhost/v5/cms/hdphp/hdphp/Extend/Org/bootstrap/js/respond.min.js"></script>
                 <![endif]-->
-	<script type="text/javascript" src="http://127.0.0.1/v5/cms/Cms/App/Admin/Tpl/Login/js/js.js"></script>
+	<script type="text/javascript" src="http://localhost/v5/cms/Cms/App/Admin/Tpl/Login/js/js.js"></script>
 </head>
 <body>
 <h3>管理员登录</h3>
-<form action='http://127.0.0.1/v5/cms/index.php/Admin/Login/login' method='post' class='hd-form'>
+<form action='http://localhost/v5/cms/index.php/Admin/Login/login' method='post' class='hd-form'>
 	<table class='table1'>
 		<tr>
 			<td class='w100'>账号</td>
@@ -57,7 +59,7 @@ PUBLIC = '<?php echo $GLOBALS['user']['PUBLIC'];?>';
 			<td>验证码</td>
 			<td>
 				<input type='text' name='code'>
-				<img src='http://127.0.0.1/v5/cms/index.php/Admin/Login/code'/>
+				<img src='http://localhost/v5/cms/index.php/Admin/Login/code'/>
 				<span id='hd_code'></span>
 			</td>
 		</tr>
