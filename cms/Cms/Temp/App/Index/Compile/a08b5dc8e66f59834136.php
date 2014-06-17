@@ -59,50 +59,44 @@ TEMPLATE = '<?php echo $GLOBALS['user']['TEMPLATE'];?>';
 				<div class="clearfix menu-main">
 					<ul id="menuSitenav" class="clearfix">
 						<li class="first-item">
-							<a href="/" class="home">
+							<a href="http://127.0.0.1/v5/cms" class="home">
 								<span>首页</span>
 							</a>
 						</li>
+									<?php
+		$type='top';
+		$cid =0?0:Q('cid',null,'intval');
+
+		$db = M('category');
+		$result = array();
+		switch($type){
+			case 'self'://显示同级栏目,需要栏目cid
+			if($cid){
+				$pid = $db->where("cid=$cid")->getField('pid');
+				$result=$db->where("pid=$pid")->all();
+			}
+			break;
+			case 'son'://子栏目,需要栏目cid
+
+			if($cid){
+				$result=$db->where("pid=$cid")->all();
+			}
+			break;
+			case 'top'://一级栏目
+			$result = $db->where('pid=0')->all();
+			break;
+		}
+		
+		if($result):
+		foreach($result as $field):
+			$field['url'] = U('channel',array('cid'=>$field['cid']))
+			?>
 						<li >
-							<a href="/page/gongsijieshao" target="_self">
-								<span>公司介绍</span>
+							<a href="<?php echo $field['url'];?>" target="_self">
+								<span><?php echo $field['cname'];?></span>
 							</a>
 						</li>
-						<li >
-							<a href="/products" target="_self">
-								<span>产品管理</span>
-							</a>
-						</li>
-						<li >
-							<a href="/articles" target="_self">
-								<span>网站新闻</span>
-							</a>
-						</li>
-						<li >
-							<a href="/jobs" target="_self">
-								<span>人才招聘</span>
-							</a>
-						</li>
-						<li >
-							<a href="/books" target="_self">
-								<span>留言系统</span>
-							</a>
-						</li>
-						<li >
-							<a href="/links" target="_self">
-								<span>友情链接</span>
-							</a>
-						</li>
-						<li >
-							<a href="/downs" target="_self">
-								<span>下载专区</span>
-							</a>
-						</li>
-						<li  class="last-item">
-							<a href="/page/lianxiwomen" target="_self">
-								<span>联系我们</span>
-							</a>
-						</li>
+					<?php endforeach;endif;?>
 					</ul>
 				</div>
 			</div>
@@ -166,16 +160,17 @@ TEMPLATE = '<?php echo $GLOBALS['user']['TEMPLATE'];?>';
 	
 		if($result):
 		foreach($result as $field):
-			$field['caturl'] = U('channel',array('cid'=>$field['cid']))
+			$field['url'] = U('article',array('id'=>$field['id']));
+			$field['caturl'] = U('channel',array('cid'=>$field['cid']));
 			?>
 													<tr>
 														<td class="title">
 															<span class="catalog">
 																[
-																<a href="" title="媒体报道"><?php echo $field['cname'];?></a>
+																<a href="<?php echo $field['caturl'];?>" title="媒体报道"><?php echo $field['cname'];?></a>
 																]
 															</span>
-															<a href="" target="_blank" >
+															<a href="<?php echo $field['url'];?>" target="_blank" >
 																<span class="style1"><?php echo $field['title'];?></span>
 															</a>
 														</td>
@@ -294,6 +289,7 @@ TEMPLATE = '<?php echo $GLOBALS['user']['TEMPLATE'];?>';
 		$result = $db->limit(5)->all();
 		if($result):
 		foreach($result as $field):
+				$field['url'] = U('article',array('id'=>$field['id']));
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
 				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>

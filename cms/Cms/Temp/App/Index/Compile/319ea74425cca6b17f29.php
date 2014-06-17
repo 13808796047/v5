@@ -30,7 +30,7 @@
 				<div class="clearfix menu-main">
 					<ul id="menuSitenav" class="clearfix">
 						<li class="first-item">
-							<a href="/" class="home">
+							<a href="http://127.0.0.1/v5/cms" class="home">
 								<span>首页</span>
 							</a>
 						</li>
@@ -133,6 +133,7 @@
 		$result = $db->limit(10)->all();
 		if($result):
 		foreach($result as $field):
+				$field['url'] = U('article',array('cid'=>$field['catid'],'id'=>$field['id']));
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
 				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
@@ -184,6 +185,7 @@
 		$result = $db->limit(3)->all();
 		if($result):
 		foreach($result as $field):
+				$field['url'] = U('article',array('cid'=>$field['catid'],'id'=>$field['id']));
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
 				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>	
@@ -329,11 +331,12 @@
 		$result = $db->limit(5)->all();
 		if($result):
 		foreach($result as $field):
+				$field['url'] = U('article',array('cid'=>$field['catid'],'id'=>$field['id']));
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
 				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
 											<li>
-												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73640.html"><?php echo $field['title'];?></a>
+												<a title="<?php echo $field['title'];?>" href="<?php echo $field['url'];?>"><?php echo $field['title'];?></a>
 											</li>
 										<?php endforeach;endif;?>	
 										</ul>
@@ -383,11 +386,12 @@
 		$result = $db->limit(5)->all();
 		if($result):
 		foreach($result as $field):
+				$field['url'] = U('article',array('cid'=>$field['catid'],'id'=>$field['id']));
 				$field['title'] = mb_substr($field['title'],0,10,'utf8');
 				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
 			?>
 											<li>
-												<a title="<?php echo $field['title'];?>" href="/articles/meitibaodao/73638.html"><?php echo $field['title'];?></a>
+												<a title="<?php echo $field['title'];?>" href="<?php echo $field['url'];?>"><?php echo $field['title'];?></a>
 											</li>
 										<?php endforeach;endif;?>
 										</ul>

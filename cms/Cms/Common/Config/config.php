@@ -16,7 +16,8 @@ $config =  array(
      'TPL_ERROR'                     => GROUP_TEMPLATE.'error.html',     //错误信息模板
      'TPL_SUCCESS'                   => GROUP_TEMPLATE.'success.html',   //正确信息模板
      'ROUTE' => array(
-        '/^list(\d+).html$/' => 'Index/index/Channel/cid/#1'
+        '/^list(\d+).html$/' => 'Index/index/Channel/cid/#1',
+        '/^(\d+)_(\d+).html$/' => 'Index/Index/Article/cid/#1/id/#2'
         ),
 );
 return array_merge($config,require 'data/config/config.inc.php');

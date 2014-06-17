@@ -1,11 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if(!defined("HDPHP_PATH"))exit;C("SHOW_NOTICE",FALSE);?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>初识集装箱干燥剂 -  绿黑色物流网站设计G</title>
 	<meta content=",网站新闻,网站新闻 " name="keywords" />
 	<meta content="" name="description" />
-	<link rel="stylesheet" type="text/css" href="__TEMPLATE__/static/css/css1.css" />
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1/v5/cms/template/default/static/css/css1.css" />
 </head>
 <body >
 	<!--顶部-->
@@ -126,29 +126,46 @@
 									</div>
 									<div class="block-content clearfix">
 										<div class="article-head">
-											<h1 class="title">{$hdcms.title}</h1>
+											<h1 class="title"><?php echo $hdcms['title'];?></h1>
 											<div class="meta">
-												<span class="item">分类：{$hdcms.cname}</span>
+												<span class="item">分类：<?php echo $hdcms['cname'];?></span>
 												<span class="item">
 													作者：
-													<span class="yellow">{$hdcms.author}</span>
+													<span class="yellow"><?php echo $hdcms['author'];?></span>
 												</span>
-												<span class="item">来源：{$hdcms.source}</span>
+												<span class="item">来源：<?php echo $hdcms['source'];?></span>
 												<span class="item">
 													发布：
-													<span class="grey">{$hdcms.addtime|date:'Y-m-d',@@}</span>
+													<span class="grey"><?php echo date('Y-m-d',$hdcms['addtime']);?></span>
 												</span>
 												<span class="item">
 													点击次数：
 													<span class="grey">
-														<script type="text/javascript" src='__CONTROL__&m=update_click&id={$hdcms.id}'></script>
+														<script type="text/javascript" src='http://127.0.0.1/v5/cms/index.php/Index/Index&m=update_click&id=<?php echo $hdcms['id'];?>'></script>
 													</span>
 												</span>
 											</div>
 										</div>
-										<div class="article-content clearfix" style="padding-top:20px;">{$hdcms.content}</div>
+										<div class="article-content clearfix" style="padding-top:20px;"><?php echo $hdcms['content'];?></div>
 										<div class="pages2">
-											<pagenext/>
+													<?php
+		$db = M('article');
+		$id = Q('id',null,'intval');
+		$result = $db->where("id<$id")->order('id DESC')->find();
+		if($result){
+			echo '<a href="#">'.$result['title'].'</a>';
+		}else{
+			echo '没有了...';
+		}
+		
+		$result = $db->where("id>$id")->order('id ASC')->find();
+		if($result){
+			echo '<a href="#">'.$result['title'].'</a>';
+		}else{
+			echo '没有了...';
+		}
+		
+		?>
 										</div>
 									</div>
 									<div class="block-foot">
@@ -172,11 +189,38 @@
 								<div class="block-content clearfix">
 									<div class="item-list">
 										<ul class="clearfix">
-										<channel type='son' cid='39'>
+												<?php
+		$type='son';
+		$cid =39?39:Q('cid',null,'intval');
+
+		$db = M('category');
+		$result = array();
+		switch($type){
+			case 'self'://显示同级栏目,需要栏目cid
+			if($cid){
+				$pid = $db->where("cid=$cid")->getField('pid');
+				$result=$db->where("pid=$pid")->all();
+			}
+			break;
+			case 'son'://子栏目,需要栏目cid
+
+			if($cid){
+				$result=$db->where("pid=$cid")->all();
+			}
+			break;
+			case 'top'://一级栏目
+			$result = $db->where('pid=0')->all();
+			break;
+		}
+		
+		if($result):
+		foreach($result as $field):
+			$field['url'] = U('channel',array('cid'=>$field['cid']))
+			?>
 											<li>
-												<a title="{$field.cname}" href="{$field.url}">{$field.cname}</a>
+												<a title="<?php echo $field['cname'];?>" href="<?php echo $field['url'];?>"><?php echo $field['cname'];?></a>
 											</li>
-										</channel>	
+										<?php endforeach;endif;?>	
 											
 										</ul>
 									</div>
@@ -199,11 +243,40 @@
 								<div class="block-content clearfix">
 									<div class="item-list">
 										<ul class="clearfix">
-										<arclist row='5' type='new'>
+												<?php
+		$cid = $_GET['cid'];
+		$db = M('article');
+		$type = 'new';
+		if($cid){
+			$db->where("catid=$cid");
+		}
+		if(0){
+			$db->where("id=0");
+		}
+		if(0){
+			$db->where("thumb<>''");
+		}
+		switch ($type) {
+			case 'hot':
+					$db->order('click desc');
+				break;
+
+
+			default:
+					$db->order('id desc');
+		}
+		
+		$result = $db->limit(5)->all();
+		if($result):
+		foreach($result as $field):
+				$field['url'] = U('article',array('cid'=>$field['catid'],'id'=>$field['id']));
+				$field['title'] = mb_substr($field['title'],0,10,'utf8');
+				$field['thumb'] = 'http://127.0.0.1/v5/cms/'.$field['thumb'];
+			?>
 											<li>
-												<a title="初识集装箱干燥剂" href="{$field.url}">{$field.title}</a>
+												<a title="初识集装箱干燥剂" href="<?php echo $field['url'];?>"><?php echo $field['title'];?></a>
 											</li>
-										</arclist>
+										<?php endforeach;endif;?>
 										</ul>
 									</div>
 								</div>
