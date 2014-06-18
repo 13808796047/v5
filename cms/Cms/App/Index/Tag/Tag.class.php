@@ -35,7 +35,7 @@ Class Tag{
 	
 		if(\$result):
 		foreach(\$result as \$field):
-			\$field['url'] = U('article',array('id'=>\$field['id']));
+			\$field['url'] = U('article',array('cid'=>\$field['catid'],'id'=>\$field['id']));
 			\$field['caturl'] = U('channel',array('cid'=>\$field['cid']));
 			?>
 str;

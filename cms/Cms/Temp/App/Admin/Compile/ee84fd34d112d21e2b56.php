@@ -97,6 +97,10 @@ endif;?>
 					<dd>
 						<a href="<?php echo U('Category/Category/index');?>">栏目管理</a>
 					</dd>
+					<dd>
+						<a href="<?php echo U('Backup/Backup/set');?>">数据备份</a>
+						<a href="<?php echo U('Backup/Recovery/index');?>">数据还原</a>
+					</dd>
 				</dl>
 			</div>
 			<!--主体左侧导航-->
