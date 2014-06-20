@@ -6,5 +6,6 @@ return array (
   'email' => '511391805@qq.com',
   'webstatus' => '1',
   '网站关闭提示' => '网站升级中......',
+  'BACKUP_DIR' => 'backup',
 );
 ?>

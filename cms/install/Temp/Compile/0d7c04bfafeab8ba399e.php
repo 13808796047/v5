@@ -44,7 +44,7 @@ HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 			<tr>
 				<th class='w100'>端口</th>
 				<td>
-					<input type='text' name='DB_PROT' value='3306'>
+					<input type='text' name='DB_PORT' value='3306'>
 				</td>
 			</tr>
 			<tr>
@@ -63,7 +63,7 @@ HTTPREFERER = '<?php echo $GLOBALS['user']['HTTPREFERER'];?>';
 			<tr>
 				<th class='w100'>数据库</th>
 				<td>
-					<input type='text' name='DB_NAME' value='vv' >
+					<input type='text' name='DB_DATABASE' value='cms' >
 				</td>
 			</tr>
 			<tr>

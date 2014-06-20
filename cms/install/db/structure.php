@@ -22,7 +22,7 @@ $db->exe("CREATE TABLE `".$db_prefix."article` (
   `updatetime` int(10) DEFAULT NULL,
   `title` char(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 $db->exe("DROP TABLE IF EXISTS `".$db_prefix."category`");
 $db->exe("CREATE TABLE `".$db_prefix."category` (
   `cid` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '栏目ID',
@@ -31,7 +31,7 @@ $db->exe("CREATE TABLE `".$db_prefix."category` (
   `keywords` varchar(80) DEFAULT NULL COMMENT '关键字',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
 $db->exe("DROP TABLE IF EXISTS `".$db_prefix."config`");
 $db->exe("CREATE TABLE `".$db_prefix."config` (
   `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
@@ -42,4 +42,4 @@ $db->exe("CREATE TABLE `".$db_prefix."config` (
   `message` varchar(255) NOT NULL DEFAULT '',
   `option` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8");
+) ENGINE=InnoDB DEFAULT CHARSET=utf8");
